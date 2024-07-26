@@ -8,7 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7131a632-fa88-4847-a35c-7cb2cce11d36" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
@@ -28,6 +27,7 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Reversi.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/org/example/MoveValidatorTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/org/example/ReversiTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,40 +90,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Reversi.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build reversi.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MoveValidatorTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MoveValidatorTest.makeMove_right_to_left.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MoveValidatorTest.testIsMoveValid.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MoveValidatorTest.testIsValidPosition.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReversiTest.determineSeparator.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReversiTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReversiTest.makeMove_diagonal_up_left.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReversiTest.makeMove_down_to_up.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReversiTest.makeMove_left_to_right.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReversiTest.makeMove_mixed_hv.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReversiTest.makeMove_right_to_left.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReversiTest.makeMove_up_to_down.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReversiTest.parseMove.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReversiTest.parseMoveStringIntoToken.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReversiTest.parseMove_valid_move.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.reversi [:Reversi.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/rainerb/IdeaProjects/reversi/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Reversi.executor": "Run",
+    "Gradle.Build reversi.executor": "Run",
+    "Gradle.MoveValidatorTest.executor": "Run",
+    "Gradle.MoveValidatorTest.makeMove_right_to_left.executor": "Run",
+    "Gradle.MoveValidatorTest.testIsMoveValid.executor": "Run",
+    "Gradle.MoveValidatorTest.testIsValidPosition.executor": "Run",
+    "Gradle.ReversiTest.determineSeparator.executor": "Run",
+    "Gradle.ReversiTest.executor": "Run",
+    "Gradle.ReversiTest.makeMove_diagonal_up_left.executor": "Run",
+    "Gradle.ReversiTest.makeMove_down_to_up.executor": "Run",
+    "Gradle.ReversiTest.makeMove_left_to_right.executor": "Run",
+    "Gradle.ReversiTest.makeMove_mixed_hv.executor": "Run",
+    "Gradle.ReversiTest.makeMove_right_to_left.executor": "Run",
+    "Gradle.ReversiTest.makeMove_up_to_down.executor": "Run",
+    "Gradle.ReversiTest.parseMove.executor": "Run",
+    "Gradle.ReversiTest.parseMoveStringIntoToken.executor": "Run",
+    "Gradle.ReversiTest.parseMove_valid_move.executor": "Run",
+    "Gradle.reversi [:Reversi.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "Rebasing main",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "/home/rainerb/IdeaProjects/reversi/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.example" />
