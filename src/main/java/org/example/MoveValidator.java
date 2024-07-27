@@ -109,4 +109,9 @@ public class MoveValidator {
             }
         }
     }
+
+    public boolean isMoveValid(Player[][] board, Move move, Player currentPlayer) {
+        Collection<Move> allMoves = findAllMoves(board, currentPlayer);
+        return allMoves.contains(move);
+    }
 }

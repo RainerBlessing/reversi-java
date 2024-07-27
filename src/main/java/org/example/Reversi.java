@@ -1,10 +1,7 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Reversi {
     private static final int SIZE = 8; // Größe des Bretts
@@ -86,114 +83,45 @@ public class Reversi {
             System.out.println("Punktzahl Schwarz: " + calculateScore(Player.BLACK));
             System.out.println("Punktzahl Weiß: " + calculateScore(Player.WHITE));
 
-            if (!hasValidMoves(currentPlayer)) {
-                System.out.println("Keine gültigen Züge mehr für " + (currentPlayer == Player.BLACK ? "Schwarz" : "Weiß") + ".");
-                break;
-            }
+            if (checkForGameOver(currentPlayer)) break;
 
-            System.out.println("Spieler " + (currentPlayer == Player.BLACK ? "Schwarz" : "Weiß") + ", gib deinen Zug ein (z.B. E6): ");
-            String move = scanner.nextLine().trim();
-            if (move.length() != 2) {
-                System.out.println("Ungültige Eingabe. Bitte versuche es erneut.");
-                continue;
-            }
+            Move move = playerInput(currentPlayer, scanner);
+            if (move == null) continue;
 
-            char colChar = move.charAt(0);
-            char rowChar = move.charAt(1);
-
-            int col = colChar - 'A';
-            int row = rowChar - '1';
-
-            if (col < 0 || col >= SIZE || row < 0 || row >= SIZE) {
-                System.out.println("Ungültige Koordinaten. Bitte versuche es erneut.");
-                continue;
-            }
-
-            if (!moveValidator.isMoveValid(board, row, col, currentPlayer)) {
-                System.out.println("Ungültiger Zug. Bitte versuche es erneut.");
-                continue;
-            }
-
-            executeMove(row, col, currentPlayer);
+            executeMove(move, currentPlayer);
             currentPlayer = (currentPlayer == Player.BLACK) ? Player.WHITE : Player.BLACK;
         }
 
         scanner.close();
     }
 
-    Move parseMove(String inputString) {
-        List<String> coordinateToken = parseMoveStringIntoToken(inputString);
-
-        String startToken = coordinateToken.get(0);
-        char colCharStart = startToken.charAt(0);
-        char rowCharStart = startToken.charAt(1);
-
-        String endToken = coordinateToken.get(1);
-        char colCharEnd = endToken.charAt(0);
-        char rowCharEnd = endToken.charAt(1);
-
-        return new Move(colCharStart,rowCharStart,colCharEnd,rowCharEnd);
-    }
-
-    ArrayList<String> parseMoveStringIntoToken(String inputString) {
-        char separator = determineSeparator(inputString);
-        String[] tokens = inputString.split(String.valueOf(separator));
-
-        return Arrays.stream(tokens).map(String::trim).collect(Collectors.toCollection(ArrayList::new));
-    }
-
-    char determineSeparator(String inputString) {
-        boolean separator = inputString.indexOf(',') > -1;
-        char separatorChar = 0;
-        if (!separator) {
-            separator = inputString.indexOf('-') > -1;
-            if (!separator) {
-                separator = inputString.indexOf(' ') > -1;
-                if (separator) {
-                    separatorChar = ' ';
-                }
-            } else {
-                separatorChar = '-';
-            }
-        } else {
-            separatorChar = ',';
+    private boolean checkForGameOver(Player currentPlayer) {
+        if (!hasValidMoves(currentPlayer)) {
+            System.out.println("Keine gültigen Züge mehr für " + (currentPlayer == Player.BLACK ? "Schwarz" : "Weiß") + ".");
+            return true;
         }
+        return false;
+    }
 
-        return separatorChar;
+    private Move playerInput(Player currentPlayer, Scanner scanner) {
+        System.out.println("Spieler " + (currentPlayer == Player.BLACK ? "Schwarz" : "Weiß") + ", gib deinen Zug ein (z.B. E4 E6): ");
+        String moveString = scanner.nextLine().trim();
+        Move move = new MoveParser().parseMove(moveString);
+        if (!moveValidator.isMoveValid(board, move, currentPlayer)) {
+            System.out.println("Ungültiger Zug. Bitte versuche es erneut.");
+            return null;
+        }
+        return move;
+    }
+
+    private void executeMove(Move move, Player currentPlayer) {
+        executeMove(currentPlayer,move.start.getX(),move.start.getY(),move.end.getX(),move.end.getY(),move.direction.stepValueY,move.direction.stepValueX);
     }
 
     /**
      * Führt einen Zug aus und kehrt alle betroffenen Steine um.
-     *
-     * @param rowStart die Zeilenkoordinate des Zugs.
-     * @param colStart die Spaltenkoordinate des Zugs.
-     * @param player   der aktuelle Spieler.
      */
-    private void executeMove(int rowStart, int colStart, Player player) {
-        board[rowStart][colStart] = player;
-
-        for (Direction direction : Direction.values()) {
-            int dr = direction.stepValueY;
-            int dc = direction.stepValueX;
-            int rowEnd = rowStart + dr;
-            int colEnd = colStart + dc;
-            boolean foundOpponent = false;
-
-            while (moveValidator.isValidPosition(board, colEnd, rowEnd) && board[rowEnd][colEnd] == player.getOpponent()) {
-                rowEnd += dr;
-                colEnd += dc;
-                foundOpponent = true;
-            }
-
-            if (foundOpponent && moveValidator.isValidPosition(board, colEnd, rowEnd) && board[rowEnd][colEnd] == Player.NONE) {
-                flipStones(player, colStart, rowStart, colEnd, rowEnd, dr, dc);
-            }
-
-            break;
-        }
-    }
-
-    private void flipStones(Player player, int colStart, int rowStart, int colEnd, int rowEnd, int dr, int dc) {
+    private void executeMove(Player player, int colStart, int rowStart, int colEnd, int rowEnd, int dr, int dc) {
         int flipR = rowStart + dr;
         int flipC = colStart + dc;
         while (flipR != rowEnd || flipC != colEnd) {
